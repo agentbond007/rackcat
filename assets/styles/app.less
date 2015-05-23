@@ -1,0 +1,68 @@
+body {
+  padding-top: 90px;
+}
+
+
+.inline-table-list{
+  list-style: none;
+  padding:0;
+  margin:0;
+}
+.inline-table-list li {
+  display: inline;
+}
+
+.rackRowContainer{
+  background-color:#EFEFEF;
+  border-bottom:1px solid #E3E3E3;
+  text-align: center;
+  margin-bottom: 1px;
+}
+.rackItem{
+  background-color: #00D8FF;
+  border-bottom: 1px solid #00C2EF;
+}
+.rackRowContainer:last-child > .rackItem {
+  border-bottom: 0;
+}
+.rackNumbers{
+  float:left;
+}
+.rackNumber{
+  width:40px;
+  background-color: #333333;
+  color: #EFEFEF;
+
+}
+
+.rackRowSize-1 {
+  height:40px;
+  line-height: 40px;
+}
+.rackRowSize-1 > .rackNumbers > .rackNumber {
+  line-height: 40px;
+}
+
+.rackRowSize-2 {
+  height:60px;
+  line-height: 60px;
+}
+.rackRowSize-2 > .rackNumbers > .rackNumber {
+  line-height: 30px;
+}
+
+.rackRowSize-3 {
+  height:81px;
+  line-height: 81px; 
+}
+.rackRowSize-3 > .rackNumbers > .rackNumber {
+  line-height: 27px;
+}
+
+.rackRowSize-4 {
+  height:100px;
+  line-height: 100px;
+}
+.rackRowSize-4 > .rackNumbers > .rackNumber {
+  line-height: 25px;
+}
