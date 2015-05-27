@@ -17,3 +17,7 @@ cd rackcat && npm install && cd assets && bower install;
 ```
 
 edit `config/local.example.js` and rename it to `config/local.js`
+
+visit `http://localhost:1337` and start hacking away.
+
+To run tests, run `npm test` or `mocha -R spec -b --recursive --timeout 5000` from the rackcat folder.
