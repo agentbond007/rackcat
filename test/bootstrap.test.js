@@ -29,19 +29,20 @@ before(function(done){
 
     fixtures = barrels.data;
     console.log('beginning populate');
-    barrels.populate(['User'], function(err){
+    barrels.populate(['user'], function(err){
       console.log('done populating User');
       if(err){
-        done(err);
+        console.log(err);
+        return done(err);
       }
 
-      barrels.populate(['Passport', 'location', 'rack', 'tag', 'comment'], function(err){
+      barrels.populate(['passport', 'location', 'rack', 'tag', 'comment'], function(err){
         console.log('done populating everything else');
         if(err){
-          done(err);
+          return done(err);
         }
         done(err, sails);
-      });
+      }, false);
     });
   });
 });

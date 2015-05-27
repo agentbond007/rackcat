@@ -1,9 +1,10 @@
 [
   {
-    "username"    : "testuser",
-    "email"       : "test@user.com",
-    "passports"   : [
-      1
-    ]
+    "username"  : "testuser",
+    "email"     : "test@user.com"
+  },
+  {
+    "username"  : "testuser2",
+    "email"     : "test@user2.com"
   }
 ]
