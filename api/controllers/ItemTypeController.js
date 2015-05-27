@@ -6,21 +6,6 @@
  */
 
 module.exports = {
-	index: function index(req, res){
-
-		Itemtype.find()
-		.populate('items')
-		.exec(function list(err, itemtypes){
-			if(err) return res.send(500);
-
-			if(req.wantsJSON) {
-				res.json(itemtypes);
-			}else{
-				res.view('itemtype/index', { itemtypes: itemtypes});
-			}
-
-		});
-	},
 
 	findByName: function findByName(req, res){
 
@@ -38,13 +23,5 @@ module.exports = {
 			}
 
 		});
-	},
-
-	create: function create(req, res){
-		res.view('itemtype/create');
-	},
-
-	createNew: function createNew(req, res){
-		res.send(200);
-	},
+	}
 };
