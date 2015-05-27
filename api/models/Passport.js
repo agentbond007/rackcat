@@ -46,8 +46,8 @@ var Passport = {
     // When the local strategy is employed, a password will be used as the
     // means of authentication along with either a username or an email.
     //
-    // accessToken is used to authenticate API requests. it is generated when a 
-    // passport (with protocol 'local') is created for a user. 
+    // accessToken is used to authenticate API requests. it is generated when a
+    // passport (with protocol 'local') is created for a user.
     password    : { type: 'string', minLength: 8 },
     accessToken : { type: 'string' },
 
@@ -83,6 +83,13 @@ var Passport = {
      */
     validatePassword: function (password, next) {
       bcrypt.compare(password, this.password, next);
+    },
+
+    // Override toJSON instance method to remove password value
+    toJSON: function() {
+      var obj = this.toObject();
+      delete obj.password;
+      return obj;
     }
 
   },
@@ -105,7 +112,7 @@ var Passport = {
    */
   beforeUpdate: function (passport, next) {
     hashPassword(passport, next);
-  }
+  },
 };
 
 module.exports = Passport;
