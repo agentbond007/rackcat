@@ -31,7 +31,8 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "PORT=9999 NODE_ENV=test mocha -R spec -b --recursive"
   },
   "main": "app.js",
   "repository": {
@@ -39,5 +40,12 @@
     "url": "git://github.com/mhdevita/rackcat.git"
   },
   "author": "mhdevita",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "barrels": "^1.4.1",
+    "grunt-mocha": "^0.4.12",
+    "mocha": "^2.2.5",
+    "should": "^6.0.3",
+    "supertest": "^1.0.1"
+  }
 }

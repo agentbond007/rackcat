@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Home Lab",
+    "metadata": {
+    },
+
+    "racks": [
+      1,
+      2
+    ]
+  }
+]
