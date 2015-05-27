@@ -8,6 +8,11 @@ before(function(done){
       level: 'error'
     },
     port: 9999,
+    connections: {
+      test: {
+        adapter: 'sails-memory',
+      }
+    },
     models: {
       connection: 'test',
       migrate: 'drop'

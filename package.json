@@ -45,6 +45,7 @@
     "barrels": "^1.4.1",
     "grunt-mocha": "^0.4.12",
     "mocha": "^2.2.5",
+    "sails-memory": "^0.10.4",
     "should": "^6.0.3",
     "supertest": "^1.0.1"
   }

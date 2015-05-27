@@ -33,14 +33,7 @@ module.exports.connections = {
     host: 'localhost',
     user: 'root',
     database: 'rackcat_dev'
-  },
-  test: {
-    adapter: 'sails-mysql',
-    host: 'localhost',
-    user: 'root',
-    database: 'rackcat_dev'
   }
-
 
   /***************************************************************************
   *                                                                          *
