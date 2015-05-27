@@ -11,5 +11,9 @@
   "Error.Passport.Email.Exists": "This email already exists. So try logging in.",
   "Error.Passport.Username.Missing": "You need to supply a username",
   "Error.Passport.Password.Missing": "Oh no, you haven't set a password yet!",
-  "Error.Passport.Generic": "Snap. Something went wrong with authorization."
+  "Error.Passport.Generic": "Snap. Something went wrong with authorization.",
+
+	"Error.Rack.Create.UniqueName": "Oops, seems a rack is already named that. Pick another name",
+
+	"Error.ItemType.Create.UniqueName": "Oops, seems an ItemType is already named that. Pick another name"
 }

@@ -1,0 +1,12 @@
+<h1>Create Location</h1>
+<div class="alert alert-danger" role="alert" ng-repeat="error in errors"><strong>Yikes!</strong> {{error}}</div>
+<form role="form" ng-submit="createLocation(newLocation)">
+  <div class="form-group">
+    <input type="text" class="form-control input-lg" name="name" ng-model="newLocation.name" placeholder="Location Name" required>
+  </div>
+  <div class="form-group">
+    <textarea class="form-control input-lg" name="metadata.description" ng-model="newLocation.metadata.description" placeholder="Description"></textarea>
+  </div>
+  <button type="submit" class="btn btn-lg btn-success">Create Location</button>
+  <a ui-sref="location.list" class="btn btn-lg btn-danger">Cancel</a>
+</form>

@@ -13,13 +13,7 @@ module.exports = {
 		.populate('comments')
 		.exec(function findLocations(err, locations){
 			if(err) return res.send(500);
-
-			if(req.wantsJSON) {
-				res.json(locations);
-			}else{
-				res.view('location/index', { locations: locations});
-			}
+			res.json(locations);
 		});
-
 	}
 };

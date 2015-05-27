@@ -31,7 +31,11 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-  'get /': 'DashboardController.index',
+  'get /': {
+    controller: 'HomeController',
+    action: 'index'
+  },
+
   'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',
   'get /register': 'AuthController.register',
@@ -43,6 +47,8 @@ module.exports.routes = {
   'get /auth/:provider/callback': 'AuthController.callback',
   'get /auth/:provider/:action': 'AuthController.callback',
 
+
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
@@ -52,5 +58,15 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-
+  'POST /api/location': 'LocationController.create',
+  // 'POST /rack/findByName': 'RackController.findByName',
+  // 'GET /rack/new': 'RackController.create',
+  // 'POST /rack': 'RackController.createNew',
+  //
+  // 'GET /item/new': 'ItemController.create',
+  // 'POST /item': 'ItemController.createNew',
+  //
+  // 'POST /itemtype/findByName': 'ItemTypeController.findByName',
+  // 'GET /itemtype/new': 'ItemTypeController.create',
+  // 'POST /itemtype': 'ItemTypeController.createNew',
 };

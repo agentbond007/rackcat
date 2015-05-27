@@ -17,7 +17,7 @@ module.exports = {
 			if(req.wantsJSON) {
 				res.json(tags);
 			}else{
-				res.view('tag/index', { tags: tags});
+				res.view('tag/index', { tags: tags });
 			}
 		});
 	}

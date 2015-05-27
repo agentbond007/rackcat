@@ -13,13 +13,7 @@ module.exports = {
 		.populate('tags')
 		.exec(function list(err, racks){
 			if(err) return res.send(500);
-
-			if(req.wantsJSON) {
-				res.json(racks);
-			}else{
-				res.view('rack/index', { racks: racks});
-			}
-
+			res.json(racks);
 		});
 
 	},
@@ -33,12 +27,26 @@ module.exports = {
 		.populate('tags')
 		.exec(function findOne(err, rack){
 			if(err) return res.send(500);
+			res.json(rack);
+		});
+	},
 
-			if(req.wantsJSON) {
-				res.json(rack);
-			}else{
-				res.view('rack/detail', { rack: rack });
+	findByName: function findByName(req, res){
+
+		Rack.find({
+			where: {
+				name: req.body.query
 			}
+		}).exec(function(err, rack){
+			if(err) return res.send(500);
+
+			if(itemtype.length > 0){
+				res.json({ message: res.i18n('Error.Rack.Create.UniqueName'), length: rack.length, unique: false });
+			}else{
+				res.json({ unique: true });
+			}
+
+
 		});
 	}
 };
