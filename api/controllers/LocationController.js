@@ -6,14 +6,5 @@
  */
 
 module.exports = {
-	index: function index(req, res){
-		Location.find()
-		.populate('racks')
-		.populate('tags')
-		.populate('comments')
-		.exec(function findLocations(err, locations){
-			if(err) return res.send(500);
-			res.json(locations);
-		});
-	}
+
 };
