@@ -35,19 +35,12 @@ before(function(done){
         done(err);
       }
 
-      barrels.populate(['Passport'], function(err){
-        console.log('done populating Passport');
+      barrels.populate(['Passport', 'location', 'rack', 'tag', 'comment'], function(err){
+        console.log('done populating everything else');
         if(err){
           done(err);
         }
-
-        barrels.populate(['location', 'rack', 'tag', 'comment'], function(err){
-          console.log('done populating everything else');
-          if(err){
-            done(err);
-          }
-          done(err, sails);
-        });
+        done(err, sails);
       });
     });
   });
