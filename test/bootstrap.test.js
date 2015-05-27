@@ -28,10 +28,28 @@ before(function(done){
     var barrels = new Barrels();
 
     fixtures = barrels.data;
-    barrels.populate(function(err){
-      done(err, sails);
-    });
+    console.log('beginning populate');
+    barrels.populate(['User'], function(err){
+      console.log('done populating User');
+      if(err){
+        done(err);
+      }
 
+      barrels.populate(['Passport'], function(err){
+        console.log('done populating Passport');
+        if(err){
+          done(err);
+        }
+
+        barrels.populate(['location', 'rack', 'tag', 'comment'], function(err){
+          console.log('done populating everything else');
+          if(err){
+            done(err);
+          }
+          done(err, sails);
+        });
+      });
+    });
   });
 });
 

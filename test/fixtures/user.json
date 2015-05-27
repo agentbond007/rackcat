@@ -1,0 +1,9 @@
+[
+  {
+    "username"    : "testuser",
+    "email"       : "test@user.com",
+    "passports"   : [
+      1
+    ]
+  }
+]
