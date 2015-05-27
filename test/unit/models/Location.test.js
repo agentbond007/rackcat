@@ -41,5 +41,11 @@ describe('Model::Locaton', function(){
   // multiple many-many associations aren't working right now for Barrels,
   // need to discover why.
   it('should populate `tags` association');
-  it('should populate `comments` association');
+
+  it('should populate `comments` association', function(done){
+    Location.find().populate('comments').exec(function(err, locations){
+      locations[0].comments.length.should.be.eql(fixtures.location[0].comments.length);
+      done();
+    });
+  });
 });

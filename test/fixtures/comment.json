@@ -1,0 +1,14 @@
+[
+  {
+    "comment": "Test Comment For Rack 1",
+    "rack": 1
+  },
+  {
+    "comment": "Test Comment For Rack 2",
+    "rack": 2
+  },
+  {
+    "comment": "Test Comment for Location 1",
+    "location": 1
+  }
+]
