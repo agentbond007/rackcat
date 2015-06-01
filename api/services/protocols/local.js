@@ -1,5 +1,6 @@
 var validator = require('validator');
 var crypto    = require('crypto');
+var jwt = require('jsonwebtoken');
 
 /**
  * Local Authentication Protocol
@@ -66,7 +67,6 @@ exports.register = function (req, res, next) {
       protocol    : 'local'
     , password    : password
     , user        : user.id
-    , accessToken : token
     }, function (err, passport) {
       if (err) {
         if (err.code === 'E_VALIDATION') {
@@ -173,6 +173,16 @@ exports.login = function (req, identifier, password, next) {
             req.flash('error', 'Error.Passport.Password.Wrong');
             return next(null, false);
           } else {
+
+            // @TODO: JWT
+            //   generate JWT, store it to the passport, attach it to user,
+            //   and send it back
+            var token = jwt.sign(user, sails.config.jwt.secretKey, sails.config.jwt.options);
+            sails.log.debug(token);
+            passport.accessToken = token;
+            passport.save();
+            user.accessToken = token;
+            
             return next(null, user);
           }
         });

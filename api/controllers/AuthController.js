@@ -68,11 +68,19 @@ var AuthController = {
    * @param {Object} res
    */
   logout: function (req, res) {
+
     req.logout();
-    
+
+    Passport.findOne({ accessToken: req.headers.authorization }, function(err, passport){
+      if (err) { return next(err); }
+      if (!passport) { return res.forbidden({ error: 'forbidden', statusCode: 403, message: 'Invalid API Token, or user.' }); }
+      passport.accessToken = null;
+      passport.save();
+    });
+
     // mark the user as logged out for auth purposes
     req.session.authenticated = false;
-    
+
     res.redirect('/');
   },
 
@@ -164,10 +172,10 @@ var AuthController = {
         if (err) {
           return tryAgain(err);
         }
-        
+
         // Mark the session as authenticated to work with default Sails sessionAuth.js policy
         req.session.authenticated = true
-        
+
         // Upon successful login, send the user to the homepage were req.user
         // will be available.
         res.redirect('/');

@@ -6,8 +6,36 @@
 */
 
 module.exports = {
-
   attributes: {
-
+    category: {
+      type: 'string'
+    },
+    user: {
+      type: 'json'
+    },
+    ip: {
+      type: 'ip'
+    },
+    userAgent: {
+      type: 'string'
+    },
+    headers: {
+      type: 'json'
+    },
+    params: {
+      type: 'object'
+    },
+    body: {
+      type: 'object'
+    },
+    controller: {
+      type: 'string'
+    },
+    action: {
+      type: 'string'
+    },
+    url: {
+      type: 'string'
+    }
   }
 };

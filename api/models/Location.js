@@ -29,6 +29,13 @@ module.exports = {
     comments: {
       collection: 'comment',
       via: 'location'
+    },
+    createdBy: {
+      model: 'user'
+    },
+    updatedBy: {
+      model: 'user'
     }
   }
+  
 };

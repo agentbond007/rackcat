@@ -19,6 +19,15 @@
 
 module.exports.policies = {
   '*': ['passport'],
+  'LocationController': {
+    '*': ['passport'],
+    'create': ['logger', 'jwtAuth'],
+    'update': ['logger', 'jwtAuth'],
+    'destroy': ['logger', 'jwtAuth']
+  },
+  'LogController': {
+    '*': ['passport', 'jwtAuth']
+  }
   /***************************************************************************
   *                                                                          *
   * Default policy for all controllers and actions (`true` allows public     *
