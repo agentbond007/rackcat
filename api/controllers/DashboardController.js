@@ -6,7 +6,5 @@
  */
 
 module.exports = {
-	index: function index(req, res){
-    res.view('dashboard');
-  }
+	
 };
