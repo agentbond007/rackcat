@@ -14,21 +14,23 @@
           <ul class="nav navbar-nav">
             <li><a ui-sref="location.list">Locations</a></li>
             <li><a ui-sref="rack.list">Racks</a></li>
+            <li><a ui-sref="item.list">Items</a></li>
+            <li><a ui-sref="itemtype.list">Item Types</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li id="current-user-dropdown" class="dropdown" ng-if="currentUser">
+            <li id="current-user-dropdown" class="dropdown" ng-show="auth.isAuthenticated()">
                 <div class="btn-group">
                     <a class="btn btn-default btn-sm dropdown-toggle">
-                        <i class="fa fa-user"></i> {{currentUser.email}}    <span class="caret"></span>
+                        <i class="fa fa-user"></i> {{user().email}}    <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/logout"><i class="fa fa-share"></i> Logout</a></li>
+
                     </ul>
                 </div>
             </li>
-            <li ng-if="!currentUser"><a href="/register">Register</a></li>
-            <li ng-if="!currentUser"><a href="/login">Login</a></li>
-
+            <li ng-hide="auth.isAuthenticated()"><a ui-sref="auth.register">Register</a></li>
+            <li ng-hide="auth.isAuthenticated()"><a ui-sref="auth.login">Login</a></li>
+            <li ng-show="auth.isAuthenticated()"><a ng-click="logout()"><i class="fa fa-share"></i> Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

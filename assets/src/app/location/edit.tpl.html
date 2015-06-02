@@ -1,1 +1,11 @@
-coming soon...
+<div class="alert alert-danger" role="alert" ng-repeat="error in errors"><strong>Yikes!</strong> {{error}}</div>
+<form role="form" ng-submit="createLocation(newLocation)">
+  <div class="form-group">
+    <input type="text" class="form-control input-lg" name="name" ng-model="location.name" placeholder="Location Name" required>
+  </div>
+  <div class="form-group">
+    <textarea class="form-control input-lg" name="metadata.description" ng-model="location.metadata.description" placeholder="Description"></textarea>
+  </div>
+  <button type="submit" class="btn btn-lg btn-success" ng-click="saveLocation()">Edit Location</button>
+  <a ui-sref="location.detail({ id: location.id })" class="btn btn-lg btn-danger">Cancel</a>
+</form>

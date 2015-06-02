@@ -9,18 +9,26 @@ angular.module( 'Rackcat', [
     'models',
     'directives',
     'Rackcat.header',
-
+    'Rackcat.dashboard',
     'Rackcat.rack',
     'Rackcat.location',
-    'Rackcat.itemtype'
+    'Rackcat.itemtype',
+    'Rackcat.auth'
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider ) {
 
 })
 
-.run( function run () {
+
+.run( function run($rootScope, $state, Auth) {
     moment.locale('en');
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+      if (!Auth.authorize(toState.data.access)) {
+        event.preventDefault();
+        $state.go('auth.login');
+      }
+    });
 })
 
 .controller( 'AppCtrl', function AppCtrl ( $scope, config ) {

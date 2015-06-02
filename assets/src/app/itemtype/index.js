@@ -1,10 +1,13 @@
 angular.module( 'Rackcat.itemtype', [])
-.config(function config($stateProvider, $urlRouterProvider){
+.config(function config($stateProvider, $urlRouterProvider, AccessLevels){
   $stateProvider
 
   .state( 'itemtype', {
     url: '/itemtype',
     abstract: true,
+    data: {
+      access: AccessLevels.user
+    },
     views: {
       "main": {
         templateUrl: 'src/app/itemtype/index.tpl.html'

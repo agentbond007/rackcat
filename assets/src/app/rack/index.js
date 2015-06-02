@@ -1,9 +1,12 @@
 angular.module( 'Rackcat.rack', [])
-.config(function config($stateProvider, $urlRouterProvider){
+.config(function config($stateProvider, $urlRouterProvider, AccessLevels){
   $stateProvider
   .state( 'rack', {
     url: '/rack',
     abstract: true,
+    data: {
+      access: AccessLevels.user
+    },
     views: {
       "main": {
         templateUrl: 'src/app/rack/index.tpl.html'

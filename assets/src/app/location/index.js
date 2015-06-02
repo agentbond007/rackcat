@@ -1,13 +1,16 @@
 angular.module( 'Rackcat.location', [])
-.config(function config($stateProvider, $urlRouterProvider){
+.config(function config($stateProvider, $urlRouterProvider, AccessLevels){
   $stateProvider
 
   .state( 'location', {
     url: '/location',
     abstract: true,
+    data: {
+      access: AccessLevels.user
+    },
     views: {
       "main": {
-        templateUrl: 'src/app/location/index.tpl.html'
+        templateUrl: 'src/common/templates/layout.tpl.html'
       }
     }
   })
@@ -133,9 +136,30 @@ angular.module( 'Rackcat.location', [])
 })
 
 .controller('LocationEditCtrl', function LocationEditCtrl($state, $scope, LocationModel, location){
-  $cope.location = location;
+  $scope.location = location;
 
   $scope.saveLocation = function(){
-    location.$save();
-  }
+
+    LocationModel.update({ id: location.id }, location).$promise.then(
+      function success(location){
+        console.debug(location);
+        $state.go('location.detail', { id: location.id });
+      },
+      function error(err){
+        console.debug(err);
+        if(err.data.error === "E_VALIDATION"){
+          console.error(err.data);
+          angular.forEach(err.data.invalidAttributes.name, function(value, key){
+            console.error(value.message);
+            $scope.errors.push(value.message);
+          });
+        }else if(err.data.error === 'forbidden'){
+          console.error(err.data.message);
+        }
+      }
+    );
+
+
+  };
+
 })

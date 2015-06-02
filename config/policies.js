@@ -18,15 +18,14 @@
 
 
 module.exports.policies = {
-  '*': ['passport'],
+  '*': true,
   'LocationController': {
-    '*': ['passport'],
     'create': ['logger', 'jwtAuth'],
     'update': ['logger', 'jwtAuth'],
     'destroy': ['logger', 'jwtAuth']
   },
   'LogController': {
-    '*': ['passport', 'jwtAuth']
+    '*': ['jwtAuth']
   }
   /***************************************************************************
   *                                                                          *
