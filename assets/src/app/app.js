@@ -12,6 +12,7 @@ angular.module( 'Rackcat', [
 
     'Rackcat.rack',
     'Rackcat.location',
+    'Rackcat.itemtype'
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider ) {

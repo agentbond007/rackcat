@@ -1,69 +1,78 @@
-<div class="row">
-  <div class="col-lg-12">
-    <h1>Create New Item Type</h1>
-  </div>
-</div>
-<div class="row">
-  <div class="col-lg-12">
-    <form method="POST" action="/itemtype">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="form-group">
-            <label for="rack-name">Item Type Name</label>
-            <input type="text" name="name" id="itemtype-name" class="form-control input-lg" placeholder="Unique Item Type Name">
-            <p id="itemtype-name-help" class="help-block" style="display: none;"></p>
-          </div>
+<div class="col-lg-12">
+  <form role="form" ng-submit="createItemtype()">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label for="rack-name">Item Type Name</label>
+          <input ng-model="itemtype.name" type="text" name="name" id="itemtype-name" class="form-control input-lg" placeholder="Unique Item Type Name">
+          <p id="itemtype-name-help" class="help-block" style="display: none;"></p>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <h3>Fields</h3>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <h3>Fields</h3>
       </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Classes</th>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Placeholder</th>
-                <th>Input Type</th>
-                <th>Required?</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="itemtype-tbody-fields">
-            </tbody>
-            <tbody>
-              <tr>
-                <td>
-                  <input type="text" class="itemtype-fields form-control" id="itemtype-fields-class" name="fields[class]" placeholder="custom classes">
-                </td>
-                <td>
-                  <input type="text" class="itemtype-fields form-control" id="itemtype-fields-id" name="fields[id]" placeholder="unique id">
-                </td>
-                <td>
-                  <input type="text" class="itemtype-fields form-control" id="itemtype-fields-name" name="fields[name]" placeholder="unique name">
-                </td>
-                <td>
-                  <input type="text" class="itemtype-fields form-control" id="itemtype-fields-placeholder" name="fields[placeholder]" placeholder="Placeholder Text">
-                </td>
-                <td>
-                  <input type="text" class="itemtype-fields form-control" id="itemtype-fields-type" name="fields[type]" placeholder="Input Type">
-                </td>
-                <td>
-                  <input type="text" class="itemtype-fields form-control" id="itemtype-fields-required" name="fields[required]" placeholder="Required?">
-                </td>
-                <td>
-                  <button id="itemtype-add-field" class="btn btn-success">Add Field</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Classes</th>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Placeholder</th>
+              <th>Input Type</th>
+              <th>Required?</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="field in itemtype.fields">
+              <td>{{ field.class }}</td>
+              <td>{{ field.id }}</td>
+              <td>{{ field.name }}</td>
+              <td>{{ field.placeholder }}</td>
+              <td>{{ field.type }}</td>
+              <td>{{ field.required }}</td>
+              <td>
+                <button type="button" id="itemtype-remove-field" class="btn btn-danger" ng-click="removeField($index)"><i class="fa fa-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>
+                <input ng-model="newField.class" type="text" class="itemtype-fields form-control" id="itemtype-fields-class" name="fields[class]" placeholder="custom classes">
+              </td>
+              <td>
+                <input ng-model="newField.id" type="text" class="itemtype-fields form-control" id="itemtype-fields-id" name="fields[id]" placeholder="unique id">
+              </td>
+              <td>
+                <input ng-model="newField.name" type="text" class="itemtype-fields form-control" id="itemtype-fields-name" name="fields[name]" placeholder="unique name">
+              </td>
+              <td>
+                <input ng-model="newField.placeholder" type="text" class="itemtype-fields form-control" id="itemtype-fields-placeholder" name="fields[placeholder]" placeholder="Placeholder Text">
+              </td>
+              <td>
+                <input ng-model="newField.type" type="text" class="itemtype-fields form-control" id="itemtype-fields-type" name="fields[type]" placeholder="Input Type">
+              </td>
+              <td>
+                <input ng-model="newField.required" type="text" class="itemtype-fields form-control" id="itemtype-fields-required" name="fields[required]" placeholder="Required?">
+              </td>
+              <td>
+                <button type="button" id="itemtype-add-field" class="btn btn-success" ng-click="addField()">Add Field</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </form>
-  </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <button type="submit" class="btn btn-lg btn-success">Create Item Type</button>
+      </div>
+    </div>
+  </form>
 </div>

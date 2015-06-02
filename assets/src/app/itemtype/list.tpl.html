@@ -1,0 +1,32 @@
+<div class="col-lg-8">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Fields</th>
+        <th>Created on</th>
+        <th>Updated on</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="itemtype in itemtypes">
+        <td><a ui-sref="itemtype.detail({ id: itemtype.id })">{{itemtype.name}}</a></td>
+        <td>
+          <ul class="inline-table-list">
+            <li ng-repeat="field in itemtype.fields"><span class="label label-info">{{field.name}}</span></li>
+          </ul>
+          <ul>
+        </td>
+        <td>{{ itemtype.createdAt| date : 'short' }}</td>
+        <td ng-show="itemtype.updatedAt">{{ itemtype.updatedAt | date : 'short' }}<td>
+        <td>
+          <button class="btn btn-danger" text="are you sure you want to delete the item type '{{itemtype.name}}' ?" title="Delete Item Type" confirm="deleteItem($index, itemtype)">
+            <i class="fa fa-lg fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <a ui-sref="itemtype.create" class="btn btn-large btn-success">Add New Item Type</a>
+</div>
