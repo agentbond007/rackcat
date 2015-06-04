@@ -14,7 +14,7 @@
         <td><a ui-sref="itemtype.detail({ id: itemtype.id })">{{itemtype.name}}</a></td>
         <td>
           <ul class="inline-table-list">
-            <li ng-repeat="field in itemtype.fields"><span class="label label-info">{{field.name}}</span></li>
+            <li ng-repeat="field in itemtype.fields" class="field"><span class="label label-info">{{field.name}}</span></li>
           </ul>
           <ul>
         </td>

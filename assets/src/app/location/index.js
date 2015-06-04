@@ -96,21 +96,23 @@ angular.module( 'Rackcat.location', [])
   $scope.currentUser = config.currentUser;
   $scope.locations = locations;
 
-  $scope.destroyLocation = function($index, location){
+  $scope.deleteItem = function($index, location){
     LocationModel.delete({ id: location.id }).$promise.then(
       function success(model){
         console.log(model);
         $scope.locations.splice($index, 1);
        },
-      function error(err) { console.error(err); }
+      function error(err) {
+        console.error(err);
+      }
     );
   };
 
 })
 
-.controller('LocationDetailCtrl', function LocationDetailCtrl( $state, $scope, config, LocationModel, location){
-  $scope.currentUser = config.currentUser;
+.controller('LocationDetailCtrl', function LocationDetailCtrl( $state, $scope, config, LocationModel, location, CurrentUser, CommentModel){
   $scope.location = location;
+  
 })
 
 .controller('LocationCreateCtrl', function LocationCreateCtrl( $state, $scope, config, LocationModel){

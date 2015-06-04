@@ -1,9 +1,11 @@
-<div class="col-lg-8">
+<div class="col-lg-12">
   <table class="table">
     <thead>
       <tr>
         <th>Name</th>
         <th>Tags</th>
+        <th>Created on</th>
+        <th>Updated on</th>
         <th></th>
       </tr>
     </thead>
@@ -14,52 +16,13 @@
           <ul class="inline-table-list">
             <li ng-repeat="tag in location.tags"><span class="label label-info">{{tag.name}}</span></li>
         </td>
+        <td>{{location.createdAt | date : 'short' }}</td>
+        <td>{{location.updatedAt | date : 'short' }}</td>
         <td>
           <ul class="inline-table-list">
-            <li>
-              <button class="btn btn-info" data-toggle="modal" data-target="#view-history-{{location.id}}">
-                <i class="fa fa-lg fa-history"></i>
-              </button>
-              <div class="modal fade" id="view-history-{{location.id}}" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Viewing Edit History For {{location.name}}</h4>
-                    </div>
-                    <div class="modal-body">
-                      ...
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
+            <li><button class="btn btn-info"><i class="fa fa-lg fa-history"></i></button></li>
             <li><a ui-sref="location.edit({ id: location.id })" class="btn btn-warning"><i class="fa fa-lg fa-pencil"></i></a></li>
-            <li>
-              <button class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete-{{location.id}}">
-                <i class="fa fa-lg fa-trash"></i>
-              </button>
-              <div class="modal fade" id="confirm-delete-{{location.id}}" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Are you sure you wish to delete {{location.name}}</h4>
-                    </div>
-                    <div class="modal-body">
-                      ...
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-                      <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="destroyLocation($index, location)">Yes</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
+            <li><button class="btn btn-danger" text="are you sure you want to delete the location '{{location.name}}' ?" title="Delete Location" confirm="deleteItem($index, location)"><i class="fa fa-lg fa-trash"></i></button></li>
           </ul>
         </td>
       </tr>

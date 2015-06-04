@@ -16,7 +16,7 @@
     <tbody>
       <tr ng-repeat="rack in racks">
         <td><a ui-sref="rack.detail({ id: rack.id })">{{rack.name}}</a></td>
-        <td><a href="location.detail({ id: rack.location.id })">{{rack.location.name}}</a></td>
+        <td><a ui-sref="location.detail({ id: rack.location.id })">{{rack.location.name}}</a></td>
         <td>{{rack.size}}u</td>
         <td>
           <ul class="inline-table-list">
@@ -25,64 +25,19 @@
         </td>
         <td>
           <ul class="inline-table-list">
-            <li ng-repeat="tag in rack.tags"><span class="label label-info">{{tag.name}}</span></li>
             <li ng-repeat="tag in rack.tags" class="tag"><span class="label label-info">{{tag.name}}</span></li>
           </ul>
         </td>
         <td>{{ rack.createdAt| date : 'short' }}</td>
         <td ng-show="rack.updatedAt">{{ rack.updatedAt | date : 'short' }}<td>
           <ul class="inline-table-list">
-            <li>
-              <button class="btn btn-info" data-toggle="modal" data-target="#view-history-<%= rack.id %>">
-                <i class="fa fa-lg fa-history"></i>
-              </button>
-              <div class="modal fade" id="view-history-<%= rack.id %>" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Viewing Edit History For <%= rack.name %></h4>
-                    </div>
-                    <div class="modal-body">
-                      ...
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
+            <li><button class="btn btn-info" data-toggle="modal" data-target="#view-history-<%= rack.id %>"><i class="fa fa-lg fa-history"></i></button></li>
             <li><a href="/rack/update/<%= rack.id %>" class="btn btn-warning"><i class="fa fa-lg fa-pencil"></i></a></li>
-            <li>
-              <button class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete-<%= rack.id %>">
-                <i class="fa fa-lg fa-trash"></i>
-              </button>
-              <div class="modal fade" id="confirm-delete-<%= rack.id %>" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Are you sure you wish to delete <%= rack.name %></h4>
-                    </div>
-                    <div class="modal-body">
-                      Whoa there!, the following items will be orphaned if you delete this Rack. Are you sure you wanna do this?
-                      <ul>
-                        <li ng-repeat="item in rack.items"><a href="item.detail({ id: item.id })">{{item.name}}</a></li>
-                      </ul>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-                      <button type="button" class="btn btn-danger">Yes</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
+            <li><button class="btn btn-danger" text="are you sure you want to delete the rack '{{rack.name}}' ?" title="Delete Rack" confirm="deleteItem($index, rack)"><i class="fa fa-lg fa-trash"></i></button></li>
           </ul>
         </td>
       </tr>
     </tbody>
   </table>
-  <a href="/rack/create" class="btn btn-large btn-success">Add New Rack</a>
+  <a ui-sref="rack.create" class="btn btn-large btn-success">Add New Rack</a>
 </div>

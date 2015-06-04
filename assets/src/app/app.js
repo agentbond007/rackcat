@@ -35,6 +35,11 @@ angular.module( 'Rackcat', [
         $state.go('auth.login');
       }
     });
+
+    $rootScope.$on('$stateChangeSuccess', function(){
+      var data = $state.$current.data;
+      $rootScope.data = data;
+    });
 })
 
 .controller( 'AppCtrl', function AppCtrl ( $scope, config ) {

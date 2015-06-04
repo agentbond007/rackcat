@@ -1,3 +1,37 @@
+  <div class="alert alert-danger" role="alert" ng-repeat="error in errors"><strong>Yikes!</strong> {{error}}</div>
+  <form role="form" name="rackForm" ng-submit="createRack(newRack)">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="form-group" ng-class="{ 'has-error': rackForm.name.$invalid && rackForm.name.$dirty }">
+            <div class="col-sm-12">
+              <label for="name">Rack Name</label>
+              <input type="text" class="form-control input-lg" name="name" ng-model="newRack.name" placeholder="Rack Name" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <div class="col-sm-6">
+              <label for="location">Location</label>
+              <select class="form-control input-lg" ng-model="newRack.location" ng-options="location as location.name for location in locations" placeholder="Locations" required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-6">
+              <label for="name">Rack Size</label>
+               <input type="number" class="form-control input-lg" name="size" ng-model="newRack.size" min="1" max="48" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <div class="col-sm-12">
+              <label for="metadata.description">Description</label>
+              <textarea class="form-control input-lg" name="metadata.description" ng-model="newRack.metadata.description" placeholder="Description"></textarea>
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="form-group">
             <div class="col-sm-12">
@@ -8,3 +42,17 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <button type="submit" class="btn btn-lg btn-success" ng-disabled="rackForm.$invalid">Create Rack</button>
+          <a ui-sref="rack.list" class="btn btn-lg btn-danger">Cancel</a>
+        </div>
+      </div>
+      <div class="col-sm-offset-1 col-sm-4">
+        <div class="rackRowContainer">
+          <div class="row rackItem" ng-repeat="a in rows() track by $index">
+            <p class="rackNumber">{{$index + 1}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>

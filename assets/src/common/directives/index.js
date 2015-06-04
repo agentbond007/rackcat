@@ -1,5 +1,5 @@
 angular.module('directives', [
 	'directives.pageHeading',
-	'directives.confirmDelete'
+	'directives.confirmDelete',
 	'directives.comment'
 ]);
