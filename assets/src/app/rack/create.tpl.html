@@ -16,8 +16,6 @@
               <label for="location">Location</label>
               <select class="form-control input-lg" ng-model="newRack.location" ng-options="location as location.name for location in locations" placeholder="Locations" required></select>
             </div>
-          </div>
-          <div class="form-group">
             <div class="col-sm-6">
               <label for="name">Rack Size</label>
                <input type="number" class="form-control input-lg" name="size" ng-model="newRack.size" min="1" max="48" required>
