@@ -1,4 +1,7 @@
 {{location}}
+        <ul class="inline-table-list" ng-show="location.tags.length">
+          <li ng-repeat="tag in location.tags"><span class="label label-info">{{tag.name}}</span></li>
+        </ul>
     <div class="row">
       <h3>Comments</h3>
       <div class="commentsContainer" comment object="location.id" object-type="location"></div>

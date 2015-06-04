@@ -26,6 +26,7 @@
         <td>
           <ul class="inline-table-list">
             <li ng-repeat="tag in rack.tags"><span class="label label-info">{{tag.name}}</span></li>
+            <li ng-repeat="tag in rack.tags" class="tag"><span class="label label-info">{{tag.name}}</span></li>
           </ul>
         </td>
         <td>{{ rack.createdAt| date : 'short' }}</td>

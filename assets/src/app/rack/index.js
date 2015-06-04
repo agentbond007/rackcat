@@ -35,6 +35,12 @@ angular.module( 'Rackcat.rack', [])
       }
     }
   })
+      tags: function(TagModel){
+        return TagModel.query().$promise.then(
+          function success(tags){ return tags; },
+          function error(error){ return error; }
+        );
+      }
 })
 .controller('RackListCtrl', function RackListCtrl($state, $scope, config, $log, RackModel, racks) {
   $scope.currentUser = config.currentUser;
@@ -52,3 +58,14 @@ angular.module( 'Rackcat.rack', [])
   };
 
 })
+  $scope.loadTags = function(query) {
+    console.log(query);
+    query = {
+      name: {
+        contains: query
+      }
+    };
+    query = '/api/tag?where=' + JSON.stringify(query);
+    console.log(query);
+    return $http.get(query);
+  };

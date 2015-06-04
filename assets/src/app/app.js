@@ -1,6 +1,7 @@
 angular.module( 'Rackcat', [
     'ui.router',
     'angularMoment',
+    'ngTagsInput',
     'lodash',
     'angularMoment',
     'ui.bootstrap',
