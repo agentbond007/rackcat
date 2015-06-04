@@ -10,7 +10,7 @@ angular.module( 'Rackcat.itemtype', [])
     },
     views: {
       "main": {
-        templateUrl: 'src/app/itemtype/index.tpl.html'
+        templateUrl: 'src/common/templates/layout.tpl.html'
       }
     }
   })
