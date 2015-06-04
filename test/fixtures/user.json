@@ -1,0 +1,17 @@
+[
+  {
+    "username"  : "testuser",
+    "email"     : "test@user.com",
+    "password"    : "1234567890",
+    "user"        : 1,
+    "accessToken" : ""
+  },
+  {
+    "username"  : "testuser2",
+    "email"     : "test@user2.com",
+    "protocol"    : "local",
+    "password"    : "1234567890",
+    "user"        : 2,
+    "accessToken" : ""
+  }
+]
