@@ -6,6 +6,16 @@ a node/[Sails](http://sailsjs.org) powered Data Center asset tracking applicatio
 
 This is definitely a work in progress.
 
+## Demonstration
+I have stood up a Digital Ocean VPS that has the latest changes, you can check them out.. it may or may not be up..
+
+http://104.236.178.125:1337/
+
+```
+username: demouser
+password: demouser
+```
+
 ## Database
 The repo is setup to use MySQL as the database via the `sails-mysql` adapter. Mongodb, postgres, and other db's should work fine but they haven't been tested yet.
 
@@ -35,7 +45,7 @@ To run tests, run `npm test` or `mocha -R spec -b --recursive --timeout 5000` fr
 Authentication is handled with a mix between client side and server side. Client-side has all the forms and view logic for authentication (login forms, registration, authorizations). Server side has protection built onto the routes `config/policies.js` as well as an api endpoint for logging in, and registering.
 
 ### Registration
-To register a username..   
+To register a username..
 
 ```
 'POST /api/auth/register'
