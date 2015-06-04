@@ -1,5 +1,7 @@
 # rackcat
 
+[![Join the chat at https://gitter.im/mikedevita/rackcat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mikedevita/rackcat?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 a node/[Sails](http://sailsjs.org) powered Data Center asset tracking application that exposes a full REST API, comes with a responsive mobile friendly web interface.
 
 This is definitely a work in progress.
