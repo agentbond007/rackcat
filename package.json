@@ -33,7 +33,7 @@
   "scripts": {
     "debug": "node debug app.js",
     "start": "node app.js",
-    "test": "PORT=9999 NODE_ENV=test mocha -R spec -b --recursive"
+    "test": "PORT=9999 NODE_ENV=test mocha -R spec -b --recursive --timeout 5000"
   },
   "main": "app.js",
   "repository": {

@@ -36,7 +36,7 @@ before(function(done){
         return done(err);
       }
 
-      barrels.populate(['passport', 'location', 'rack', 'tag', 'comment'], function(err){
+      barrels.populate(['location', 'rack', 'tag', 'comment'], function(err){
         console.log('done populating everything else');
         if(err){
           return done(err);
