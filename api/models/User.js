@@ -12,6 +12,26 @@ var User = {
     password    : { type: 'string', minLength: 8 },
     accessToken : { type: 'text' },
 
+    /**
+     * Associations
+     */
+    comments    : {
+      collection: 'comment',
+      via: 'user'
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Override toJSON instance method to remove password value
     toJSON: function() {
       var obj = this.toObject();

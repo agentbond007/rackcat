@@ -21,6 +21,9 @@ module.exports = {
     },
     item: {
       model: 'item',
+    },
+    user: {
+      model: 'user'
     }
   }
 };

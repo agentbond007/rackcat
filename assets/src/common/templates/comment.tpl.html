@@ -1,0 +1,23 @@
+<span ng-hide="comments.length">No Comments Yet</span>
+<div class="comment" ng-repeat="comment in comments" ng-show="comments.length">
+  <div class="row">
+    <div class="col-xs-6 commentAuthor">
+      <strong>{{comment.user.username}}</strong>
+    </div>
+    <div class="col-xs-6 commentDateTime">
+      <span am-time-ago="comment.createdAt"></span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <p>{{comment.comment}}</p>
+    </div>
+  </div>
+</div>
+<form role="form" name="commentForm" ng-submit="leaveComment()">
+  <div class="form-group">
+    <textarea name="newComment" ng-model="newComment" id="newComment" class="form-control input-lg" ng-trim="false" maxlength="255" required></textarea>
+    <span ng-show="newComment.length">{{255 - newComment.length}} Chars left</span>
+  </div>
+  <button type="submit" class="btn btn-block btn-success">Leave Comment</button>
+</form>
