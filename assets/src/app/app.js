@@ -17,8 +17,18 @@ angular.module( 'Rackcat', [
     'Rackcat.auth'
 ])
 
-.config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider ) {
+.config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider) {
 
+  $urlRouterProvider.otherwise('/dashboard');
+
+  // $urlRouterProvider.otherwise(function($injector, $location){
+  //   if (!Auth.authorize(toState.data.access)) {
+  //     event.preventDefault();
+  //     $state.go('auth.login');
+  //   }else{
+  //     $stage.go('dashboard.home');
+  //   }
+  // });
 })
 
 
