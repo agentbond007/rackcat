@@ -23,6 +23,11 @@ angular.module( 'Rackcat', [
 
 .run( function run($rootScope, $state, Auth) {
     moment.locale('en');
+
+    /**
+     * check for authorizations, if state has anon accesslevel, let it through
+     * otherwise check for an access_token, otherwise redirect to auth.login
+     */
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
       if (!Auth.authorize(toState.data.access)) {
         event.preventDefault();

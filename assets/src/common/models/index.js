@@ -3,5 +3,6 @@ angular.module('models', [
 	'models.comment',
 	'models.location',
 	'models.rack',
-	'models.itemtype'
+	'models.itemtype',
+	'models.tag',
 ]);

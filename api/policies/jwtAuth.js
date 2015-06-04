@@ -1,24 +1,31 @@
-module.exports = function (req, res, next) {
+module.exports = function(req, res, next) {
+  var token;
 
-  var jwt = require('jsonwebtoken');
+  if (req.headers && req.headers.authorization) {
+    var parts = req.headers.authorization.split(' ');
+    if (parts.length == 2) {
+      var scheme = parts[0],
+        credentials = parts[1];
 
-  if(req.headers.authorization === undefined){
-    return res.forbidden({ error: 'forbidden', statusCode: 403, message: 'No API Key specified, expected authorization header, or json object with authorization' });
+      if (/^Bearer$/i.test(scheme)) {
+        token = credentials;
+      }
+    } else {
+      return res.json(401, {err: 'Format is Authorization: Bearer [token]'});
+    }
+  } else if (req.param('token')) {
+    token = req.param('token');
+    // We delete the token from param to not mess with blueprints
+    delete req.query.token;
+  } else {
+    return res.json(401, {err: 'No Authorization header was found'});
   }
 
-  var accessToken = req.headers.authorization || req.body.authorization;
-  Passport.findOne({ accessToken: accessToken }, function(err, passport){
-    if (err) { return next(err); }
-    if (!passport) { return res.forbidden({ error: 'forbidden', statusCode: 403, message: 'Invalid API Token, or user.' }); }
+  TokenAuth.verifyToken(token, function(err, token) {
+    if (err) return res.json(401, {err: 'The token is not valid'});
 
-    jwt.verify(accessToken, sails.config.jwt.secretKey, function(err, jwtDecoded){
-      User.findOneById(jwtDecoded.id, function(err, user) {
-        if (err) { return next(err); }
-        if (!user) { return res.forbidden({ error: 'forbidden', statusCode: 403, message: 'Invalid API Token, or user.' }); }
-        return next(null, user);
-      });
-    });
+    req.token = token;
+
+    next();
   });
-
-
 };
