@@ -35,7 +35,7 @@ To run tests, run `npm test` or `mocha -R spec -b --recursive --timeout 5000` fr
 Authentication is handled with a mix between client side and server side. Client-side has all the forms and view logic for authentication (login forms, registration, authorizations). Server side has protection built onto the routes `config/policies.js` as well as an api endpoint for logging in, and registering.
 
 ### Registration
-To register a username..   
+To register a username, you can either visit `/#/register` or POST to the API with the following information.
 
 ```
 'POST /api/auth/register'
