@@ -14,6 +14,7 @@ angular.module( 'Rackcat', [
     'Rackcat.rack',
     'Rackcat.location',
     'Rackcat.itemtype',
+    'Rackcat.user',
     'Rackcat.auth'
 ])
 
@@ -22,7 +23,7 @@ angular.module( 'Rackcat', [
 })
 
 
-.run( function run($rootScope, $state, Auth) {
+.run( function run($rootScope, $state, Auth, CurrentUser) {
     moment.locale('en');
 
     /**
@@ -36,6 +37,7 @@ angular.module( 'Rackcat', [
       }
     });
 
+    $rootScope.CurrentUser = CurrentUser.user;
     $rootScope.$on('$stateChangeSuccess', function(){
       var data = $state.$current.data;
       $rootScope.data = data;

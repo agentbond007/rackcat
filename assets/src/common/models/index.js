@@ -5,4 +5,5 @@ angular.module('models', [
 	'models.rack',
 	'models.itemtype',
 	'models.tag',
+	'models.user'
 ]);

@@ -16,12 +16,13 @@
             <li><a ui-sref="rack.list">Racks</a></li>
             <li><a ui-sref="item.list">Items</a></li>
             <li><a ui-sref="itemtype.list">Item Types</a></li>
+            <li><a ui-sref="user.list">Users</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li id="current-user-dropdown" class="dropdown" ng-show="auth.isAuthenticated()">
                 <div class="btn-group">
                     <a class="btn btn-default btn-sm dropdown-toggle">
-                        <i class="fa fa-user"></i> {{user().email}}    <span class="caret"></span>
+                        <i class="fa fa-user"></i> {{CurrentUser().email}}    <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
 
