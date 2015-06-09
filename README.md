@@ -79,3 +79,15 @@ if the login is successful this is the user object you'll get back.
 Once logged in further API calls require an `Authorization` header with the `bearer + $token` to be sent along with the request. the client-side does this automatically via the Auth service, you can see that snippet of code right [here](https://github.com/mikedevita/rackcat/blob/master/assets/src/common/services/auth.js#L37-L39).
 
 the backend applies the policy `jwtAuth` (based on config/policies.js) to check for that Authorization token, decrypt, and validate it against the users table. The policy is located under [api/policies/jwtAuth.js](https://github.com/mikedevita/rackcat/blob/master/api/policies/jwtAuth.js) and it uses a service for Token decryption, and encryption. The TokenAuth service is located under  [api/services/TokenAuth.js](https://github.com/mikedevita/rackcat/blob/master/api/services/TokenAuth.js).
+
+# TODO
+future planned updates/features
+
+* refactor the backend associations to support a more appropriate nosql approach, should improve performance a bit
+* improve test coverage for the api unit tests
+* begin implementing test coverages for the frontend via protactor
+* refactor the frontend services from using `$resource`
+* implement an angular error handler service
+* cross user messaging, realtime chat
+* some sort of `dist/` build process for releases
+* cleanup and standardize code in `api/` and the frontend, things like spacing, comments, etc
