@@ -1,5 +1,5 @@
 angular.module('models', [
-	'models.user',
+	'models.auth',
 	'models.comment',
 	'models.location',
 	'models.rack',

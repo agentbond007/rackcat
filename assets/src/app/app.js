@@ -18,7 +18,7 @@ angular.module( 'Rackcat', [
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider ) {
-
+  $urlRouterProvider.otherwise('/dashboard');
 })
 
 
