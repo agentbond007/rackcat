@@ -1,0 +1,50 @@
+<div class="alert alert-danger" role="alert" ng-repeat="error in errors"><strong>Yikes!</strong> {{error}}</div>
+<form role="form" name="itemForm" ng-submit="createItem(newItem)">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="row">
+        <div class="form-group" ng-class="{ 'has-error': itemForm.name.$invalid && itemForm.name.$dirty }">
+          <div class="col-sm-12">
+            <label for="name">Item Name</label>
+            <input type="text" class="form-control input-lg" name="name" ng-model="newItem.name" placeholder="Item Name" required>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <label for="metadata.description">Description</label>
+            <textarea class="form-control input-lg" name="metadata.description" ng-model="newItem.metadata.description" placeholder="Description"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-sm-6">
+            <label for="rack">Rack</label>
+            <select class="form-control input-lg" ng-model="newItem.rack" ng-options="rack as rack.name for rack in racks" placeholder="Racks" required ng-change="loadRack(newItem.rack)"></select>
+          </div>
+          <div class="col-sm-6">
+            <label for="name">Item Type</label>
+              <select class="form-control input-lg" ng-model="newItem.type" ng-options="type as type.name for type in types" placeholder="Types" required ng-change="loadTypeFields(newItem.type)"></select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-6" ng-repeat="field in fields">
+          <label for="{{field.name}}">{{field.placeholder}}</label>
+          <input type="{{field.type}}" ng-model="newItem.metadata[field.name]" class="form-control input-lg {{field.class}}" name="{{field.name}}" id="{{field.id}}" required="{{field.required}}" placeholder="{{field.placeholder}}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <button type="submit" class="btn btn-lg btn-success" ng-disabled="itemForm.$invalid">Create Item</button>
+          <a ui-sref="item.list" class="btn btn-lg btn-danger">Cancel</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6" ng-hide="!rack.size">
+      <div class="rackLayoutContainer" rack-layout size="rack.size" edit></div>
+    </div>
+  </div>
+</form>

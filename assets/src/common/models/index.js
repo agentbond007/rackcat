@@ -4,6 +4,7 @@ angular.module('models', [
 	'models.location',
 	'models.rack',
 	'models.itemtype',
+	'models.item',
 	'models.tag',
 	'models.user'
 ]);

@@ -121,19 +121,19 @@ angular.module( 'Rackcat.rack', [])
   };
 
   $scope.createRack = function createRack(){
-      RackModel.save($scope.newRack,
-        function success(rack){
-          $state.go('rack.detail', {id: rack.id });
-        },
-        function error(err){
-          if(err.data.error === "E_VALIDATION"){
-            console.error(err.data);
-            angular.forEach(err.data.invalidAttributes.name, function(value, key){
-              console.error(value.message);
-              $scope.errors.push(value.message);
-            });
-          }
-      });
+    RackModel.save($scope.newRack,
+      function success(rack){
+        $state.go('rack.detail', {id: rack.id });
+      },
+      function error(err){
+        if(err.data.error === "E_VALIDATION"){
+          console.error(err.data);
+          angular.forEach(err.data.invalidAttributes.name, function(value, key){
+            console.error(value.message);
+            $scope.errors.push(value.message);
+          });
+        }
+    });
   };
 })
 .controller('RackDetailCtrl', function RackDetailCtrl($state, $scope, config, $log, RackModel, rack){

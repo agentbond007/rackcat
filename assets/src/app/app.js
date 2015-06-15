@@ -14,6 +14,7 @@ angular.module( 'Rackcat', [
     'Rackcat.rack',
     'Rackcat.location',
     'Rackcat.itemtype',
+    'Rackcat.item',
     'Rackcat.user',
     'Rackcat.auth'
 ])

@@ -1,7 +1,7 @@
 <div class="rackRowContainer">
   <div class="row rackItem" ng-repeat="a in rows() track by $index">
     <div class="rackItem" ng-class="{ 'has-item': row.item }">
-      <p class="rackNumber">{{$index + 1}}</p>
+      <p class="rackNumber">{{$index + 1}}<input type="checkbox" id="row-{{$index + 1}}" value="{{$index +1}}"></p>
     </div>
   </div>
 </div>

@@ -4,7 +4,8 @@ angular.module('directives.rackLayout', [])
     restrict: 'A',
     scope: {
       'rack': '=',
-      'size': '='
+      'size': '=',
+      'edit': '@'
     },
     templateUrl: 'src/common/templates/rackLayout.tpl.html',
     link: function($scope, elem, attrs) {
