@@ -46,10 +46,7 @@
         </div>
       </div>
       <div class="col-sm-offset-1 col-sm-4">
-        <div class="rackRowContainer">
-          <div class="row rackItem" ng-repeat="a in rows() track by $index">
-            <p class="rackNumber">{{$index + 1}}</p>
-          </div>
+        <div class="rackLayoutContainer" rack-layout size="newRack.size"></div>
         </div>
       </div>
     </div>

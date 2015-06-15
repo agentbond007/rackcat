@@ -4,5 +4,6 @@ angular.module('directives', [
 	'directives.comment',
 	'directives.tag',
 	'directives.compareTo',
-	'directives.ngPasswordStrength'
+	'directives.ngPasswordStrength',
+	'directives.rackLayout'
 ]);

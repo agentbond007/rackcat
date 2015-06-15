@@ -35,6 +35,26 @@ angular.module( 'Rackcat.rack', [])
       }
     }
   })
+  .state('rack.detail', {
+    url: '/detail/:id',
+    data: {
+      heading: 'Rack Detail'
+    },
+    views: {
+      'interior': {
+        controller: 'RackDetailCtrl',
+        templateUrl: 'src/app/rack/detail.tpl.html',
+      }
+    },
+    resolve: {
+      rack: function(RackModel, $stateParams){
+        return RackModel.get({ id: $stateParams.id }).$promise.then(
+          function success(rack){ return rack; },
+          function error(error){ return error; }
+        );
+      }
+    }
+  })
   .state('rack.create', {
     url: '/create',
     data: {
@@ -100,10 +120,6 @@ angular.module( 'Rackcat.rack', [])
     return $http.get(query);
   };
 
-  $scope.rows = function() {
-    return new Array($scope.newRack.size);
-  };
-
   $scope.createRack = function createRack(){
       RackModel.save($scope.newRack,
         function success(rack){
@@ -119,4 +135,8 @@ angular.module( 'Rackcat.rack', [])
           }
       });
   };
+})
+.controller('RackDetailCtrl', function RackDetailCtrl($state, $scope, config, $log, RackModel, rack){
+
+  $scope.rack = rack;
 })
