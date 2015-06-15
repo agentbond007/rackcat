@@ -43,8 +43,14 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-6" ng-hide="!rack.size">
-      <div class="rackLayoutContainer" rack-layout size="rack.size" edit></div>
+    <div class="col-sm-6">
+      <div class="rackRowContainer">
+        <div class="row rackItem" ng-repeat="a in rackRows track by $index">
+          <div class="rackItem" ng-class="{ 'has-item': row.item }">
+            <p class="rackNumber">{{$index + 1}}<input type="checkbox" name="position[]" ng-model="newItem.position[]" id="row-{{$index + 1}}" value="{{$index +1}}"></p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </form>

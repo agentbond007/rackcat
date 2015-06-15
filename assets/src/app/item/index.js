@@ -93,8 +93,12 @@ angular.module( 'Rackcat.item', [])
   };
 
   $scope.loadRack = function loadRack(rack){
+    console.debug(rack);
     $scope.rack = rack;
+    $scope.rackRows = new Array(rack.size);
+    console.debug($scope.rackRows);
   }
+
 
   $scope.loadTypeFields = function(type){
     console.debug(type);
