@@ -1,0 +1,10 @@
+<div class="tagsContainer">
+  <ul class="inline-table-list" ng-show="tags.length">
+    <li ng-repeat="tag in tags"><span class="label label-info">{{tag.name}}</span></li>
+  </ul>
+  <span ng-hide="tags.length">No Tags yet</span>
+  <tags-input ng-model="newTag" display-property="name" replace-spaces-with-dashes="false">
+    <auto-complete source="loadTags($query)" display-property="name"></autocomplete>
+  </tags-input>
+  <button class="btn btn-block btn-success" ng-click="save()">Save</button>
+</div>

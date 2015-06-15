@@ -93,8 +93,9 @@ angular.module( 'Rackcat.location', [])
 })
 
 .controller('LocationListCtrl', function LocationListCtrl( $scope, config, LocationModel, locations) {
-  $scope.currentUser = config.currentUser;
   $scope.locations = locations;
+
+
 
   $scope.deleteItem = function($index, location){
     LocationModel.delete({ id: location.id }).$promise.then(
@@ -112,7 +113,12 @@ angular.module( 'Rackcat.location', [])
 
 .controller('LocationDetailCtrl', function LocationDetailCtrl( $state, $scope, config, LocationModel, location, CurrentUser, CommentModel){
   $scope.location = location;
-  
+  $scope.saveTags = function(tags){
+    console.log('saveTags called from location controller, initiated by directive', tags);
+    $scope.location.tags.push(tags);
+    console.log($scope.location);
+    LocationModel.update({id: $scope.location.id }, $scope.location);
+  };
 })
 
 .controller('LocationCreateCtrl', function LocationCreateCtrl( $state, $scope, config, LocationModel){

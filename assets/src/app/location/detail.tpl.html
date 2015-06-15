@@ -5,12 +5,7 @@
   <div class="col-md-4">
     <div class="row">
       <h3>Tags</h3>
-      <div class="tagsContainer">
-        <ul class="inline-table-list" ng-show="location.tags.length">
-          <li ng-repeat="tag in location.tags"><span class="label label-info">{{tag.name}}</span></li>
-        </ul>
-        <span ng-hide="location.tags.length">No Tags yet</span>
-      </div>
+     <div class="tagsContainer" tag object="location.id" object-type="location" save="saveTags(tags)"></div>
     </div>
     <div class="row">
       <h3>Comments</h3>
