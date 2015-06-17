@@ -107,7 +107,6 @@ angular.module( 'Rackcat.item', [])
   $scope.deleteItem = function deleteItem($index, item){
     ItemModel.destroy({ id: item.id }).then(
       function success(model){
-        console.log(model);
         $scope.items.splice($index, 1);
        },
       function error(err) {
@@ -129,7 +128,9 @@ angular.module( 'Rackcat.item', [])
   $scope.fields = [];
 
   $scope.createItem = function createItem(item){
-    ItemModel.create($scope.newItem).then(
+    item.fields = $scope.fields;
+
+    ItemModel.create(item).then(
       function success(item){
         $state.go('item.detail', {id: item.id });
       },

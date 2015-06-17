@@ -1,6 +1,26 @@
-{{item}}
-
-<div class="form-group col-sm-6" ng-repeat="metadata in item.metadata">
-  <label for="{{}}">{{metadata}}</label>
-  <input type="{{field.type}}" ng-model="newItem.metadata[field.name]" class="form-control input-lg {{field.class}}" name="{{field.name}}" id="{{field.id}}" required="{{field.required}}" placeholder="{{field.placeholder}}">
+<div class="row">
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>{{item.name}}</h3>
+        <p>{{item.metadata.description}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-sm-6" ng-repeat="field in item.fields">
+        <label for="{{field.name}}">{{field.name}}</label>
+        <input type="{{field.type}}" ng-model="field.value" class="form-control input-lg {{field.class}}" name="{{field.name}}" id="{{field.id}}" required="{{field.required}}" value="{{field.value}}" disabled>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="row">
+      <h3>Tags</h3>
+     <div class="tagsContainer" tag object="item.id" object-type="item" save="saveTags(tags)"></div>
+    </div>
+    <div class="row">
+      <h3>Comments</h3>
+      <div class="commentsContainer" comment object="item.id" object-type="item"></div>
+    </div>
+  </div>
 </div>

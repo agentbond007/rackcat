@@ -33,7 +33,7 @@
       <div class="row">
         <div class="form-group col-sm-6" ng-repeat="field in fields">
           <label for="{{field.name}}">{{field.placeholder}}</label>
-          <input type="{{field.type}}" ng-model="newItem.metadata[field.name]" class="form-control input-lg {{field.class}}" name="{{field.name}}" id="{{field.id}}" required="{{field.required}}" placeholder="{{field.placeholder}}">
+          <input type="{{field.type}}" ng-model="field.value" class="form-control input-lg {{field.class}}" name="{{field.name}}" id="{{field.id}}" required="{{field.required}}" placeholder="{{field.placeholder}}">
         </div>
       </div>
       <div class="row">
