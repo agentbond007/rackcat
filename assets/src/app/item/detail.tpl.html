@@ -1,1 +1,6 @@
 {{item}}
+
+<div class="form-group col-sm-6" ng-repeat="metadata in item.metadata">
+  <label for="{{}}">{{metadata}}</label>
+  <input type="{{field.type}}" ng-model="newItem.metadata[field.name]" class="form-control input-lg {{field.class}}" name="{{field.name}}" id="{{field.id}}" required="{{field.required}}" placeholder="{{field.placeholder}}">
+</div>

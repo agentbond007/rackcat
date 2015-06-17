@@ -19,6 +19,9 @@ module.exports = {
     size: {
       type: 'integer'
     },
+    fields: {
+      type: 'json'
+    },
     metadata: {
       type: 'json'
     },
