@@ -35,6 +35,20 @@ angular.module('models.item', ['lodash', 'services'])
 
       return deferred.promise;
     },
+
+    destroy: function destroy(item){
+      var deferred = $q.defer();
+      $http.delete('/api/item/' + item.id)
+      .success(function(data, status){
+        deferred.resolve(data);
+      })
+      .error(function(data, status){
+        deferred.reject(data);
+      });
+
+      return deferred.promise;
+    },
+
     create: function create(item){
       var deferred = $q.defer();
 

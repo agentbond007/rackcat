@@ -66,6 +66,20 @@ angular.module( 'Rackcat.item', [])
 
 .controller('ItemListCtrl', function ItemListCtrl($state, $scope, config, $log, ItemModel, items){
   $scope.items = items;
+
+  $scope.deleteItem = function deleteItem($index, item){
+
+    ItemModel.destroy({ id: item.id }).then(
+      function success(model){
+        console.log(model);
+        $scope.items.splice($index, 1);
+       },
+      function error(err) {
+        console.error(err);
+      }
+    );
+
+  }
 })
 
 .controller('ItemCreateCtrl', function ItemCreateCtrl($state, $scope, config, $log, ItemModel, racks, itemtypes){
